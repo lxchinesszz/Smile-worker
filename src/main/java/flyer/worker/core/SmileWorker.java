@@ -1,9 +1,5 @@
 package flyer.worker.core;
-
-
 import flyer.worker.exception.IllegalhandlerException;
-import org.springframework.util.ObjectUtils;
-
 import java.util.Map;
 import java.util.Queue;
 
@@ -50,7 +46,7 @@ public class SmileWorker implements Runnable {
 
     @Override
     public void run() {
-//获取子任务
+        //获取子任务
         while (true) {
             Object input = workQueue.poll();
             if (input == null) {
@@ -58,7 +54,7 @@ public class SmileWorker implements Runnable {
             }
             //处理子任务
             Object re = handle(input);
-            if (ObjectUtils.isEmpty(re)) {
+            if (re == null) {
                 throw new IllegalhandlerException("请复写SmileWorkerhandler中handler方法");
             }
             resultMap.put(Integer.toString(input.hashCode()), re);

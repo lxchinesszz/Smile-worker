@@ -21,7 +21,7 @@ public class SmileMasterTest {
         /**
          * 测试使用Map维护Thread
          */
-        StopWatch watch = new StopWatch();
+        StopWatch watch = new StopWatch("Master-Worker测试");
         watch.start("测试ThreadMap");
         Integer testthreadMapResult = testthreadMap(10,100000);
         System.out.println("测试ThreadMap result:"+testthreadMapResult);
@@ -33,7 +33,7 @@ public class SmileMasterTest {
          * 使用线程池维护现场
          */
         watch.start("测试ExecutorService");
-        Integer testExecutorServiceResult = testExecutorService(10,100000);
+        Integer testExecutorServiceResult = testExecutorService(100,100000);
         System.out.println("测试ExecutorService result:"+testExecutorServiceResult);
         watch.stop();
         System.out.println(watch.prettyPrint());
